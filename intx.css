@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+}
+#div1{
+    margin-top: 70px;
+    height: 500px;
+    width: 600px;
+    background-color: aliceblue;
+      display: flex;
+    justify-content: center;
+     border-radius: 10px;
+   
+}
+#div2{
+    margin-top: 30px;
+}
+button{
+    background-color: brown;
+    color:wheat ;
+}
+#inp{
+    width: 300px;
+}
+#div3{
+    margin-top: 35px;
+    margin-left: 200px;
+    height: fit-content;
+    background-color: aquamarine;
+}
