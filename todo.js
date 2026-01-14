@@ -2,9 +2,7 @@ let list=[];
 let edit = -1;
 
  function save(){
-  let task={
-
-  }
+  
   let date=document.getElementById("date").value;
    let inp= document.getElementById("inp").value ;
  
@@ -13,9 +11,9 @@ let edit = -1;
 
 
     if (edit == -1) {
-    list.push(inp);
+    list.push({taak:inp,da:date});
   } else {
-    list[edit] = { inp };
+    list[edit] = { taak:inp,da:date };
     edit = -1;
   } 
 
@@ -27,15 +25,23 @@ clear();
  }
 
  function show(){
-    
-    let lo="";
-   for (let i = 0; i < list.length; i++) {
-       
-   lo+= "<li>" + list[i] + "</li>" +
-    "<button onclick='del(" + i + ")'>Delete</button>" 
+    let rows="";
 
-   }
-   document.getElementById("div3").innerHTML=lo;
+     for (let i = 0; i < list.length; i++) {
+      if (list[i].da < "13-01-2006") {
+          list[i].da.style.Color = "red";
+  } 
+    rows +=
+      "<tr>" +
+      "<td>" + list[i].taak + "</td>" +
+      
+      "<td>" + list[i].da + "</td>" +
+      
+      "<button onclick='del(" + i + ")'>Delete</button>" +
+      
+      "</tr>";
+  }
+   document.getElementById("table").innerHTML=rows;
  }
 
  function del(i) {
@@ -44,5 +50,5 @@ clear();
 }
 function clear() {
   document.getElementById("inp").value = "";
-
+  document.getElementById("date").value="";
 }

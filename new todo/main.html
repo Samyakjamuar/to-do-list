@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date Todo List</title>
+</head>
+
+
+<body>
+
+<h3>Todo List with Date</h3>
+
+<input id="task" placeholder="Enter task">
+<input id="date" type="date">
+<button onclick="addTodo()">Add</button>
+
+<ul id="result"></ul>
+
+<script>
+let todos = [];
+let edit = -1;
+
+function addTodo() {
+  let task = document.getElementById("task").value;
+  let date = document.getElementById("date").value;
+
+ 
+  if (edit === -1) {
+    todos.push({ task: task, date: date });
+  }else{
+    console.log("some this ")
+  }
+
+//   todos.push({ task: task, date: date })
+
+  document.getElementById("task").value = "";
+  document.getElementById("date").value = "";
+
+  showTodos();
+}
+
+function showTodos() {
+  let list = "";
+  let today = new Date().toISOString().split("T")[0];
+
+  for (let i = 0; i < todos.length; i++) {
+
+    let color = "";
+    if (todos[i].date < today) color = "red";
+
+    list += "<li style='color:" + color + "'>" +
+            todos[i].task + " (Due: " + todos[i].date + ")" +
+            "<button onclick='editData(" + i + ")'>Edit</button> " +
+            " <button onclick='deleteTodo(" + i + ")'>Delete</button>" +
+            "</li>";
+  }
+
+  document.getElementById("result").innerHTML = list;
+}
+
+function deleteTodo(i) {
+  todos.splice(i, 1);
+  showTodos();
+}
+function editData(i){
+  document.getElementById("task").value = todos[i].task;
+  document.getElementById("date").value = todos[i].date;
+   edit = i;
+
+}
+</script>
+
+</body>
+</html>
